@@ -31,7 +31,7 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
-            src="../image/logo-removebg-preview.png"
+            src="image/logo-removebg-preview.png"
             alt="logo"
             width="60"
             height="50"
@@ -53,40 +53,72 @@
           id="navbarSupportedContent"
         >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
             <li class="nav-item">
               <a class="nav-link text-light" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-warning" href="/add-project">Add Project</a>
+              <a class="nav-link text-light" href="/add-project">Add Project</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="/testimoni">Testimoni</a>
 
             </li>
             <ul class="dropdown-menu bg-light">
-              <li><a
-                  class="dropdown-item text-light text-"
-                  href="/"
-                >Home</a></li>
-              <li><a class="dropdown-item text-warning" href="/add-project">Add
+              <li><a class="dropdown-item text-warning" href="/">Home</a></li>
+              <li><a class="dropdown-item text-light" href="/add-project">Add
                   Project</a></li>
               <li><a
                   class="dropdown-item text-light"
                   href="/testimoni"
                 >Testimoni</a></li>
-              <li><a class="dropdown-item text-light" href="/contact">Contact me</a>
-              </li>
+              <li><a
+                  class="dropdown-item text-light"
+                  href="/from-register"
+                >register </a></li>
+              <li><a
+                  class="dropdown-item text-light"
+                  href="/from-login"
+                >Login</a></li>
+              <li><a
+                  class="dropdown-item text-light"
+                  href="/from-logout"
+                >Logout</a></li>
+              <li><a class="dropdown-item text-light" href="/contact">Contact me</a></li>
             </ul>
 
           </ul>
-          <form class="d-block">
-            <a
-              class="nav-link text-light rounded bg-black fs-5 d-flex justify-content-center"
-              href="/contact"
-            >Contact me</a>
-          </form>
+
+          <div class="d-flex justify-content-between">
+            <ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
+              {{#if isLogin}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-danger active fw-semibold"
+                    href="#"
+                  >Hello, {{user}}</a>
+                </li>
+                <li class="nav-item ms-3">
+                  <a class="nav-link text-light" href="/from-logout">Logout</a>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-light"
+                    href="/from-register"
+                  >Register</a>
+                </li>
+                <li class="nav-item ms-3">
+                  <a class="nav-link text-light" href="/from-login">Login</a>
+                </li>
+              {{/if}}
+              <a class="btn btn-danger btn-submit ms-5" href="/contact">Contact
+                Me</a>
+            </ul>
+          </div>
         </div>
       </div>
+
     </nav>
 
     <div class="d-flex mt-5 container">

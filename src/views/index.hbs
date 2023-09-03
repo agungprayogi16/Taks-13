@@ -23,7 +23,7 @@
     />
     <link rel="icon" href="image/123.jpeg" type="image/x-icon" />
     <title>Taks Agung prayogi purba</title>
-    <link rel="stylesheet" href="css/index.css" />
+
   </head>
 
   <body>
@@ -53,6 +53,7 @@
           id="navbarSupportedContent"
         >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
             <li class="nav-item">
               <a class="nav-link text-warning" href="/">Home</a>
             </li>
@@ -64,30 +65,67 @@
 
             </li>
             <ul class="dropdown-menu bg-light">
-              <li><a
-                  class="dropdown-item text-light text-"
-                  href="/"
-                >Home</a></li>
+              <li><a class="dropdown-item text-warning" href="/">Home</a></li>
               <li><a class="dropdown-item text-light" href="/add-project">Add
                   Project</a></li>
               <li><a
                   class="dropdown-item text-light"
                   href="/testimoni"
                 >Testimoni</a></li>
-              <li><a class="dropdown-item text-light" href="/contact">Contact me</a>
-              </li>
+              <li><a
+                  class="dropdown-item text-light"
+                  href="/from-register"
+                >register </a></li>
+              <li><a
+                  class="dropdown-item text-light"
+                  href="/from-login"
+                >Login</a></li>
+              <li><a
+                  class="dropdown-item text-light"
+                  href="/from-logout"
+                >Logout</a></li>
+              <li><a class="dropdown-item text-light" href="/contact">Contact me</a></li>
             </ul>
 
           </ul>
-          <form class="d-block">
-            <a
-              class="nav-link text-light rounded bg-black fs-5 d-flex justify-content-center"
-              href="/contact"
-            >Contact me</a>
-          </form>
+
+          <div class="d-flex justify-content-center">
+            <ul class="navbar-nav">
+              {{#if isLogin}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-danger active fw-semibold"
+                    href="#"
+                  >Hello, {{user}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="/from-logout">Logout</a>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-light"
+                    href="/from-register"
+                  >Register</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="/from-login">Login</a>
+                </li>
+              {{/if}}
+              <a class="btn btn-danger btn-submit" href="/contact">Contact Me</a>
+            </ul>
+          </div>
         </div>
       </div>
+
     </nav>
+    {{#if messages.success}}
+      <div class="alert alert-success" role="alert">
+        <div class="container">
+          {{messages.success}}
+        </div>
+      </div>
+    {{/if}}
     <div
       class="container-sm d-flex mt-5 grid bg-light d-none d-lg-flex col align-center justify-content-center"
     >
@@ -229,14 +267,20 @@
                   <i class="fa-brands fa-android fs-2"></i>
                   <i class="fa-brands fa-java fs-2"></i>
                 </div>
-                <div class="d-flex justify-content-between gap-3 mt-3">
-                  <button type="reset" class="btn btn-dark w-50">Clear</button>
-                  <button
-                    onclick="whenFormEmpty()"
-                    type="submit"
-                    class="btn btn-dark w-50"
-                  >Send</button>
-                </div>
+                {{#if this.isLogin}}
+                  <div class="d-flex justify-content-end">
+                    <a
+                      href=""
+                      class="btn btn-secondary text-decoration-none me-3 px-3 py-1"
+                      style="font-size: 14px;"
+                    >EDIT</a>
+                    <a
+                      href="/delete-project/{{this.id}}"
+                      class="btn btn-danger text-decoration-none px-3 py-1"
+                      style="font-size: 14px;"
+                    >DELETE</a>
+                  </div>
+                {{/if}}
 
               </div>
             </div>
